@@ -2,10 +2,16 @@
 
 $num = 7.2;
 $name = "6";
+$nomeCognome = "Mario Rossi";
 
 echo $name + $num;
 
 echo "<hr>";
+
+echo 'Questa ' . $num . ' valore<br>';
+echo "Questa " . $num . " valore<br>";
+
+echo "Number is $num<br>";
 
 /**
  * somma
