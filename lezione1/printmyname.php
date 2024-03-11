@@ -21,6 +21,7 @@ $name = "Paolo";
     <script>
         //   alert("Ciao");
         document.write("testo");
+        alert("Ciao <?php echo $name; ?>");
         console.log("Scrive sotto");
     </script>
 </head>
