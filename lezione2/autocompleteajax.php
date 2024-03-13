@@ -25,6 +25,7 @@
     <form action="">
         <label for="fname">Nome:</label>
         <input type="text" id="fname" name="fname" onkeyup="showHint(this.value)">
+        <label for="ftel">Telefono:</label>
         <input type="text" id="ftel" name="ftel" onkeyup="showTel(this.value)">
     </form>
     <p>Suggerimento nome: <span id="txtHint"></span></p>
