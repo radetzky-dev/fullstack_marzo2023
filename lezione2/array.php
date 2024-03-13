@@ -18,5 +18,13 @@ echo $cars[1];
 echo '<hr>';
 
 echo $cars[2];
+echo '<hr>';
+$cars[3] = "renault";
+var_dump($cars);
+
+echo '<hr>';
+
+echo $cars[3];
+
 
 
