@@ -1,6 +1,6 @@
 <?php
 
-$string = 'gianni.rovessss  ri@example.com';
+$string = 'gianni.rovessssri@example.com';
 
 //Expected Output : 'paolo'
 
