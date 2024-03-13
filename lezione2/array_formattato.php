@@ -5,7 +5,7 @@ $catalogo = array(
             "nome" => "scolapasta",
             "prezzo" => 1.99,
             "qta" => 1,
-            //TODO inserire immagini
+            "img" => "bullone.png",
         ),
     ),
     "utensili" => array(
@@ -13,11 +13,13 @@ $catalogo = array(
             "nome" => "martello",
             "prezzo" => 7.99,
             "qta" => 5,
+            "img" => "martello.png",
         ),
         array(
             "nome" => "pinza",
             "prezzo" => 5.99,
             "qta" => 0,
+            "img" => "rastrello.png",
         ),
     ),
 
@@ -36,7 +38,7 @@ $catalogo["casalinghi"][] = array("nome" => "tegame", "prezzo" => 35.99, "qta" =
 $catalogo["cucina"][] = array("nome" => "pentola", "prezzo" => 45.99, "qta" => 0);
 $catalogo["giardinaggio"][] = array("nome" => "vaso", "prezzo" => 9.99, "qta" => 0);
 $catalogo["giardinaggio"][] = array("nome" => "zappa", "prezzo" => 12.99, "qta" => 1);
-$catalogo["ferramenta"][] = array("nome" => "cacciavite", "prezzo" => 6.99, "qta" => 7);
+$catalogo["ferramenta"][] = array("nome" => "cacciavite", "prezzo" => 6.99, "qta" => -7);
 $catalogo["ferramenta"][] = array("nome" => "bullone", "prezzo" => 1.99, "qta" => 1);
 $catalogo["giardinaggio"][] = array("nome" => "rastrello", "prezzo" => 29.99, "qta" => 2);
 
@@ -68,7 +70,11 @@ function showCategory(array $catalogo, string $catName): void
                 $buttonStatus = "disabled";
             }
 
-            echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
+            //TODO controllare se esiste, se non esiste usare placeholder
+
+            $image = "<img src='assets/" . $prodotti['img'] . "' class='img-thumbnail'>";
+
+            echo "<tr><td>" . $image . "</td><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
             <td><button class='btn btn-primary' " . $buttonStatus . " >Compra</button></td>
             </tr>";
         }
@@ -98,7 +104,7 @@ function calculateDiscount(float $price, float $percentDiscount): float
  */
 function checkIfLast(int $qta): int|string
 {
-    if ($qta == 0) {
+    if ($qta <= 0) {
         return "ESAURITO";
     } elseif ($qta == 1) {
         return "ULTIMO";
@@ -127,6 +133,7 @@ function checkIfLast(int $qta): int|string
             <table class="table table-bordered" id="tabella">
                 <thead class="table-dark">
                     <tr>
+                        <th>Immagine</th>
                         <th>Qta</th>
                         <th>Descrizione</th>
                         <th>Prezzo</th>
