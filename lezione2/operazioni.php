@@ -45,3 +45,37 @@ $b .= "There!";
 echo $b;
 
 
+//COMPARAZIONE
+echo "<hr>";
+var_dump("1" == "01");
+
+var_dump("1" !== "01");
+
+var_dump(1 == "1");
+
+var_dump(1 === "1");
+
+//Incrementali
+echo "<hr>";
+$x = 11;
+
+echo $x;
+echo "<br>";
+echo ++$x;
+echo "<br>";
+echo $x++;
+echo "<br>";
+echo $x;
+
+echo "<hr>";
+
+$a = "Hello ";
+$b = $a . "<b>World!</b>"; // now $b contains "Hello World!"
+
+
+?>
+<hr>
+<?php
+$a = "Hello ";
+$a .= "<b>World!</b><br>";     // now $a contains "Hello World!"
+echo $a;
