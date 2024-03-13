@@ -70,9 +70,9 @@ function showCategory(array $catalogo, string $catName): void
                 $buttonStatus = "disabled";
             }
 
-            //TODO controllare se esiste, se non esiste usare placeholder
+            //    $image = "<img src='assets/" . $prodotti['img'] . "' class='img-thumbnail'>";
 
-            $image = "<img src='assets/" . $prodotti['img'] . "' class='img-thumbnail'>";
+            $image = "<img src='assets/" . (isset($prodotti['img']) ? $prodotti['img'] : 'dummy.png') . "' class='img-thumbnail'>";
 
             echo "<tr><td>" . $image . "</td><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
             <td><button class='btn btn-primary' " . $buttonStatus . " >Compra</button></td>
