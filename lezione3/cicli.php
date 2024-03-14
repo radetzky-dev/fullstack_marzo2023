@@ -9,6 +9,7 @@ while ($i <= 10) {
 }
 echo "Totale $sum";
 
+
 echo "<hr>";
 
 $i = 1;
@@ -131,6 +132,7 @@ print_r($a);
 echo "</pre>";
 echo "<br>";
 
+
 foreach ($a as $v1) {
     foreach ($v1 as $c => $v2) {
         echo "chiave $c e valore : $v2<br>";
@@ -155,4 +157,21 @@ foreach ($anagrafica as $v1) {
     foreach ($v1 as $c => $v2) {
         echo "chiave $c e valore : $v2<br>";
     }
+}
+
+
+echo "<hr>";
+
+$arr = array(1, 2, 4, 5, 6, 7, 9);
+
+foreach ($arr as $key => $value) {
+    if (!($value % 2)) { // salta i numeri pari
+        continue;
+    }
+
+    if ($value == 5) {
+        continue;
+    }
+
+    echo "numero dispari $value <br>";
 }
