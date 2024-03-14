@@ -84,3 +84,75 @@ echo "<hr>";
 for ($i = 1, $j = 20, $x = 4; $i <= 4 || $j <= 800; $i++, $j = $j + 200, $x = $x + 2) {
     echo "i=" . $i . ", j=" . $j . " x=$x <br>";
 }
+
+
+echo "<hr>";
+
+$a = array(1, 32, 310, 17);
+
+foreach ($a as $valore) {
+    echo "Current value of \$a: $valore <br>";
+}
+
+echo "<hr>";
+$a = array(
+    "one" => 1,
+    "two" => 2,
+    "three" => 3,
+    "seventeen" => 17
+);
+
+echo $a['one'] . '<br>';
+
+foreach ($a as $chiave => $valore) {
+    echo "\$a[$chiave] => $valore <br>";
+    echo $valore . "<br>";
+    echo $chiave . "<br>";
+    if ($chiave == 'one') {
+        echo "Ho trovato la mia chiave!<br>";
+        //funzione
+    }
+
+    if ($valore == 3) {
+        echo "Ho trovato il mio valore!<br>";
+        //funzione
+    }
+}
+
+echo "<hr>";
+$a = array();
+$a[0][0] = "a";
+$a[0][1] = "b";
+$a[1]["primo"] = "y";
+$a[1]["secondo"] = "z";
+
+echo "<pre>";
+print_r($a);
+echo "</pre>";
+echo "<br>";
+
+foreach ($a as $v1) {
+    foreach ($v1 as $c => $v2) {
+        echo "chiave $c e valore : $v2<br>";
+    }
+}
+
+echo "<hr>";
+$anagrafica = array();
+$anagrafica[0]["nome"] = "mario";
+$anagrafica[0]["cognome"] = "rossi";
+$anagrafica[1]["nome"] = "silvia";
+$anagrafica[1]["cognome"] = "bianchi";
+$anagrafica[2]["nome"] = "gino";
+$anagrafica[2]["cognome"] = "verdi";
+
+echo "<pre>";
+print_r($anagrafica);
+echo "</pre>";
+echo "<br>";
+
+foreach ($anagrafica as $v1) {
+    foreach ($v1 as $c => $v2) {
+        echo "chiave $c e valore : $v2<br>";
+    }
+}
