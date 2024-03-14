@@ -24,3 +24,10 @@ echo "<hr>";
 echo "<pre>";
 print_r($frutti);
 echo "</pre>";
+
+$frutti[1] = "arancia";
+echo "<hr>";
+echo "<pre>";
+print_r($frutti);
+echo "</pre>";
+
