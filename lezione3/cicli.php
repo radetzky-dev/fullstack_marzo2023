@@ -11,7 +11,7 @@ echo "Totale $sum";
 
 echo "<hr>";
 
-$i = 4;
+$i = 1;
 while ($i <= 10) {
     echo $i++;  /* the printed value would be
 $i before the increment
@@ -23,11 +23,31 @@ echo "finale $i<br>";
 echo "<hr>";
 /* example 2 */
 
-$i = 1;
-while ($i < 10):
+$i = 11;
+while ($i <= 10):
     echo $i;
     echo "<br>";
     $i++;
 endwhile;
+
+echo "finale $i<br>";
+
+echo "<hr>";
+$i = 11;
+while ($i > 2):
+    echo --$i;
+    echo "<br>";
+
+endwhile;
+
+echo "finale $i<br>";
+
+echo "<hr>";
+$i = 15;
+do {
+    echo "sono dentro<br>";
+    echo $i . '<br>';
+    $i--;
+} while ($i > 10);
 
 echo "finale $i<br>";
