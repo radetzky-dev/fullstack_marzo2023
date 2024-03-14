@@ -31,3 +31,11 @@ echo "<pre>";
 print_r($frutti);
 echo "</pre>";
 
+unset($frutti['fruttoX']);
+unset($frutti[0]);
+echo "<hr>";
+echo "<pre>";
+print_r($frutti);
+echo "</pre>";
+
+
