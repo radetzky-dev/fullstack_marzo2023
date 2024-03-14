@@ -80,9 +80,28 @@ print_r($reversed);
 print_r($preserved);
 
 echo "<hr>";
-$array1 = array("color" => "red", 2, 4);
+$array1 = array("color" => "red", 2, 4, "shape" => "xxx");
 $array2 = array("a", "b", "color" => "green", "shape" => "trapezoid", 4);
 $result = array_merge($array1, $array2);
 print_r($result);
 
+
+echo "<hr>";
+$input = array("a", "b", "c", "d", "e");
+
+$output = array_slice($input, 2);      // returns "c", "d", and "e"
+$output = array_slice($input, -2, 1);  // returns "d"
+$output = array_slice($input, 0, 3);   // returns "a", "b", and "c"
+
+// note the differences in the array keys
+print_r(array_slice($input, 2, -1));
+print_r(array_slice($input, 2, -1, true));
+
+echo "<hr>";
+$array = array(0 => 100, "color" => "red");
+print_r(array_keys($array));
+
+echo "<hr>";
+$array = array("size" => "XL", "color" => "gold");
+print_r(array_values($array));
 
