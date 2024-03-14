@@ -51,3 +51,36 @@ do {
 } while ($i > 10);
 
 echo "finale $i<br>";
+
+echo "<hr>";
+for ($i = 3; $i <= 11; $i++) {
+    echo $i . "<br>";
+}
+
+echo "<hr>";
+for ($x = 11; $x > 3; $x--) {
+    echo $x . "<br>";
+}
+
+echo "<hr>";
+for ($i = 1; ; $i++) {
+    if ($i > 10) {
+        break;
+    }
+    echo $i;
+}
+echo "<hr>";
+$people = array(
+    array('name' => 'Kalle', 'salt' => 856412),
+    array('name' => 'Pierre', 'salt' => 215863),
+    array('name' => 'Mario', 'salt' => 215434863)
+);
+
+for ($i = 0; $i < count($people); $i++) {
+    echo "$i) " . $people[$i]['name'] . " sale: " . $people[$i]['salt'] . "<br>";
+}
+
+echo "<hr>";
+for ($i = 1, $j = 20, $x = 4; $i <= 4 || $j <= 800; $i++, $j = $j + 200, $x = $x + 2) {
+    echo "i=" . $i . ", j=" . $j . " x=$x <br>";
+}
