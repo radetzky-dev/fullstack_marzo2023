@@ -51,3 +51,6 @@ if (strripos($myString, $search[0]) !== false) {
     $contains = "non";
 }
 echo "La stringa $contains contiene la parola <strong>'$search'</strong>";
+
+
+e
