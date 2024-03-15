@@ -8,6 +8,7 @@ Note: A prime number (or a prime) is a natural number greater than 1 that has no
 
 funzione isPrime(): true | false
 
+TIP : $a % $b Modulo
 
 for 1-100 
     {
