@@ -98,4 +98,7 @@ function helloFunction()
 
 $helloProva = helloFunction();
 echo $helloProva("Studenti MUSA");
-echo $helloProva("programmatori   MUSA");
+echo $helloProva("programmatori  MUSA");
+$name = "paolo";
+echo $helloProva($name);
+
