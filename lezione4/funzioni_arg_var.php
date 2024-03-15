@@ -61,3 +61,41 @@ infoStudent($obj_student);
 echo "<hr>";
 $obj_student2 = new Student("Paolo");
 infoStudent($obj_student2);
+
+echo "<hr>";
+
+$sum = function ($val1, $val2) {
+    return $val1 + $val2;
+};
+
+echo $sum(3, 4); // Output: 7
+echo "<hr>";
+
+$array = [2, 4, 6];
+
+array_map(function ($val) {
+    echo ($val * 2) . "<br>";
+}, $array);
+
+/* Output
+4
+8
+12
+*/
+
+echo "<hr>";
+function helloFunction()
+{
+    $hello = "buongiorno";
+    $ciao = "ciao";
+
+    return function ($name) use ($hello, $ciao) {
+        $hello = ucfirst($hello);
+        return "$hello $ciao $name!";
+    };
+}
+;
+
+$helloFunction = helloFunction();
+echo $helloFunction("Studenti MUSA"); // Buongiorno Programmatori PHP!
+echo $helloFunction("programmatori   MUSA"); // Buongiorno Programmatori PHP!
