@@ -25,7 +25,7 @@ function IsPrime($n)
     return 1;
 }
 
-for ($i = 1; $i <= 10; $i++) {
+for ($i = 1; $i <= 100; $i++) {
     $a = IsPrime($i);
     if ($a == 0)
         echo "$i is NOT a Prime Number...<br>";
