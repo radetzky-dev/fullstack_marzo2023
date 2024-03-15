@@ -19,10 +19,9 @@ function scriviNome($nome)
 
 }
 
-function add($number)
+function add(int $xxxdsdsaffs): int
 {
-    return ++$number;
-
+    return ++$xxxdsdsaffs;
 }
 
 function addRef(&$number)
