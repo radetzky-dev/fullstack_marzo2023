@@ -8,3 +8,5 @@ if (function_exists('json_validate')) {
     echo "funzione are NOT available.<br />\n";
     echo "uso un'altra funzione...";
 }
+
+phpinfo();
