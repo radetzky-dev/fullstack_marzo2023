@@ -96,6 +96,6 @@ function helloFunction()
 }
 ;
 
-$helloFunction = helloFunction();
-echo $helloFunction("Studenti MUSA"); // Buongiorno Programmatori PHP!
-echo $helloFunction("programmatori   MUSA"); // Buongiorno Programmatori PHP!
+$helloProva = helloFunction();
+echo $helloProva("Studenti MUSA");
+echo $helloProva("programmatori   MUSA");
