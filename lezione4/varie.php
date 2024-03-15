@@ -79,3 +79,7 @@ settype($foo1, "string");
 echo $foo1 . " " . gettype($foo1) . "<br>";
 settype($foo1, "integer");
 echo $foo1 . " " . gettype($foo1) . "<br>";
+
+$prova = "prova";
+$myArr = (array) $prova;
+var_dump($myArr);
