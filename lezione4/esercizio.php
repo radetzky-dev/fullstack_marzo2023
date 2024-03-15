@@ -17,7 +17,9 @@ foreach ($addresses as $value) {
 
     if (is_string($value)) {
         echo "Indirizzo: " . $value . "<br>";
-    } elseif (is_array($value)) {
+    }
+
+    if (is_array($value)) {
         $indirizzo = implode(" ", $value);
         echo $indirizzo;
         echo "<br>";
