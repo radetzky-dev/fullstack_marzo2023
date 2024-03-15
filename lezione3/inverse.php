@@ -21,3 +21,6 @@ echo '<br>';
 echo reverseString('paolo rossi verdi') . "<br>";
 
 echo strrev("paolo rossi");
+
+//creapdf
+//invaiMail
