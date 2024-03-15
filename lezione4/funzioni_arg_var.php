@@ -37,3 +37,27 @@ echo "<hr>";
 echo sommaTutto(2, 17, 321, 89.0, 212, 33.56, "gg");
 
 
+class Student
+{
+    public $name;
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+}
+// la funzione accetta solo oggetti di tipo Student
+// forza il passaggio del parametro ad essere istanza di Student
+function infoStudent(Student $student)
+{
+    echo "Nome " . $student->name;
+}
+echo "<hr>";
+$obj_student = new Student("Giulia");
+// stampa il valore della proprietà "name"...
+infoStudent($obj_student);
+// genera un errore di tipo Catchable fatal error
+//$info = infoStudent("ciao");
+
+echo "<hr>";
+$obj_student2 = new Student("Paolo");
+infoStudent($obj_student2);
