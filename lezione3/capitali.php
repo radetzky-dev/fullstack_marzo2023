@@ -10,6 +10,20 @@ The capital of Netherlands is Amsterdam
 The capital of Greece is Athens 
 The capital of Germany is Berlin
 ...
-
-
 */
+asort($ceu);
+
+// Iterate through the sorted array and echo the country and its capital
+foreach ($ceu as $country => $capital) {
+    echo "The capital of $country is $capital" . "<br>";
+}
+
+echo "<hr>";
+
+ksort($ceu);
+
+// Iterate through the sorted array and echo the country and its capital
+foreach ($ceu as $country => $capital) {
+    echo "The capital of $country is $capital" . "<br>";
+}
+
