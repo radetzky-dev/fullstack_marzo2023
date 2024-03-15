@@ -13,6 +13,7 @@ function writeName(string $name, string $surname): string
     return "ciao $name";
 }
 
+
 function scriviNome($nome)
 {
     echo "ciao $nome";
