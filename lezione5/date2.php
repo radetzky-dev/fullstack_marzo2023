@@ -202,6 +202,7 @@ echo $newDate->format('Y-m-d') . "<br>";
 
 $date = new DateTimeImmutable('2024-03-18');
 $newDate = $date->sub(new DateInterval('P1Y17D'));
+<<<<<<< HEAD
 echo $newDate->format('Y-m-d') . "<br>";
 
 echo "<hr>";
@@ -245,3 +246,6 @@ echo '<br>';
 $daterange = array_reverse(iterator_to_array($daterange));
 
 show_dates($daterange);
+=======
+echo $newDate->format('Y-m-d') . "<br>";
+>>>>>>> d35cac018f4bf5a153541b086ae8c5ba7abe63da
