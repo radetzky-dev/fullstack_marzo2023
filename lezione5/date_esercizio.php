@@ -47,6 +47,7 @@ function getBirthdayCountdown(DateTime $birthdate): DateInterval
     return $birthday->diff($today);
 }
 
+
 $dates = [
     '13-1-2001',
     '11-2-2001',
