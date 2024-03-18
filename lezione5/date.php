@@ -225,7 +225,7 @@ echo "<hr>";
 $start_date = date_create("2021-01-01");
 $end_date = date_create("2021-01-16"); // If you want to include this date, add 1 day
 
-$interval = DateInterval::createFromDateString('3 day');
+$interval = DateInterval::createFromDateString('5 day');
 $daterange = new DatePeriod($start_date, $interval, $end_date);
 
 function show_dates($dr)
