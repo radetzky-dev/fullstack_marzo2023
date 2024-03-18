@@ -2,6 +2,9 @@
 
 //echo $_SERVER['REQUEST_METHOD'];
 
+$name = "";
+$age = "";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($_POST["name"] || $_POST["age"]) {
         echo "metodo POST<br>";
@@ -14,15 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 } else {
 
-    if (isset ($_GET["name"])) {
+    if (array_key_exists('name', $_GET)) {
         if ($_GET["name"] || $_GET["age"]) {
             echo "metodo GET<br>";
-            echo "Welcome " . $_GET['name'] . "<br />";
-            echo "You are " . $_GET['age'] . " years old.";
+            echo "Ti chiami " . $_GET['name'] . "<br />";
+            echo "Hai " . $_GET['age'] . " anni.";
+
+            $name = $_GET['name'];
+            $age = $_GET['age'];
+            if (array_key_exists('hobbies', $_GET)) {
+                $hobbies = join(' ', $_GET['hobbies']);
+                echo "<br>I tuoi hobbies sono : " . $hobbies;
+            }
 
         }
     }
-
 }
 
 
@@ -39,8 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <h3>GET</h3>
     <form action="<?php $_PHP_SELF ?>" method="GET">
-        Name: <input type="text" name="name" required />
-        Age: <input type="number" name="age" required />
+        Name: <input type="text" name="name" required value="<?php echo $name; ?>" />
+        Age: <input type="number" name="age" required value="<?php echo $age; ?>" />
+        Hobby : <select name="hobbies[]" multiple>
+            <option value="golf">golf</option>
+            <option value="calcio">calcio</option>
+            <option value="surf">surf</option>
+            <option value="tennis">tennis</option>
+        </select>
         <input type="submit" />
     </form>
 
