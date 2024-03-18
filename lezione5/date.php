@@ -12,8 +12,6 @@ echo strtotime("+1 week 2 days 4 hours 2 seconds"), "<br>";
 echo strtotime("next Thursday"), "<br>";
 echo strtotime("last Monday"), "<br>";
 
-
-
 // Prints something like: Monday
 echo date("l") . '<br>';
 
@@ -98,3 +96,151 @@ echo $today['hours'] . ':' . $today['minutes'] . '<br>';
 echo "Oggi è il " . $today['mday'] . " " . $today['mon'] . ' ' . $today['year'] . ' <br>';
 
 echo "Mese " . $today['month'] . ' <br>';
+
+$Now = new DateTime('now', new DateTimeZone('Europe/Rome'));
+echo "In Italia sono le " . $Now->format('d-m-Y H:i:s');
+
+echo "<hr>";
+
+
+$utc_timezone = new DateTimeZone("UTC");
+$tallinn_timezone = new DateTimeZone("Asia/Dubai");
+
+// Create a new DateTime object in the UTC format
+$datetime = new DateTime('now', $utc_timezone);
+
+// Convert the DateTime object to the timezone of Tallinn
+$datetime->setTimezone($tallinn_timezone);
+// Display the result in the YYYY-MM-DD HH:MM:SS format
+echo "<br>A Dubai sono le " . $datetime->format('Y-m-d H:i:s');
+
+$tallinn_timezone = new DateTimeZone("Asia/Taipei");
+$datetime = new DateTime('now', $utc_timezone);
+
+// Convert the DateTime object to the timezone of Tallinn
+$datetime->setTimezone($tallinn_timezone);
+// Display the result in the YYYY-MM-DD HH:MM:SS format
+echo "<br>A Taipei sono le " . $datetime->format('Y-m-d H:i:s');
+
+echo "<hr>";
+
+$date = DateTimeImmutable::createFromFormat('j-M-Y', '15-Feb-2009');
+echo $date->format('d-m-Y');
+
+echo "<hr>";
+echo 'Current time: ' . date('d-m-Y H:i:s') . "<br>";
+
+$format = 'Y-m-d';
+$date = DateTimeImmutable::createFromFormat($format, '2009-02-15');
+echo "Format: $format; " . $date->format('Y-m-d H:i:s') . "<br>";
+
+$format = 'Y-m-d H:i:s';
+$date = DateTimeImmutable::createFromFormat($format, '2009-02-15 15:16:17');
+echo "Format: $format; " . $date->format('Y-m-d H:i:s') . "<br>";
+
+$format = 'Y-m-!d H:i:s';
+$date = DateTimeImmutable::createFromFormat($format, '2009-02-15 15:16:17');
+echo "Format: $format; " . $date->format('Y-m-d H:i:s') . "<br>";
+
+$format = '!d';
+$date = DateTimeImmutable::createFromFormat($format, '15');
+echo "Format: $format; " . $date->format('Y-m-d H:i:s') . "<br>";
+
+$format = 'i';
+$date = DateTimeImmutable::createFromFormat($format, '15');
+echo "Format: $format; " . $date->format('Y-m-d H:i:s') . "<br>";
+
+echo "<hr>";
+
+$format = 'd-m-Y';
+$date = DateTimeImmutable::createFromFormat($format, '01-03-2024');
+echo "Format: $format; " . $date->format('Y-m-d') . "<br>";
+
+echo "<hr>";
+$date = new DateTimeImmutable();
+$newDate = $date->setDate(2001, 2, 3);
+echo $newDate->format('d-m-Y');
+
+echo "<hr>";
+$date = new DateTimeImmutable('2001-01-01');
+
+$newDate = $date->setTime(14, 55);
+echo $newDate->format('Y-m-d H:i:s') . "<br>";
+
+$newDate = $date->setTime(16, 21, 24);
+echo $newDate->format('d-m-Y H:i:s') . "<br>";
+
+echo "<hr>";
+$date = new DateTime('2006-12-31');
+$date->modify('+1 day');
+echo $date->format('Y-m-d');
+
+echo "<hr>";
+$date = new DateTime('2000-12-31');
+
+$date->modify('+1 month');
+echo $date->format('Y-m-d') . "<br>";
+
+$date->modify('+2 month');
+echo $date->format('Y-m-d') . "<br>";
+
+$date->modify('+6 month');
+echo $date->format('Y-m-d') . "<br>";
+
+echo "<hr>";
+$date = new DateTimeImmutable('2000-01-01');
+$newDate = $date->add(new DateInterval('P2M'));
+echo $newDate->format('Y-m-d') . "<br>";
+
+$date = new DateTimeImmutable('2022-01-01');
+$newDate = $date->add(new DateInterval('P2Y2M17D'));
+echo $newDate->format('Y-m-d') . "<br>";
+
+$date = new DateTimeImmutable('2000-01-20');
+$newDate = $date->sub(new DateInterval('P10D'));
+echo $newDate->format('Y-m-d') . "<br>";
+
+$date = new DateTimeImmutable('2024-03-18');
+$newDate = $date->sub(new DateInterval('P1Y17D'));
+echo $newDate->format('Y-m-d') . "<br>";
+
+echo "<hr>";
+$date = new DateTimeImmutable('2000-01-01');
+echo $date->format('Y-m-d H:i:s') . '<br>';
+echo $date->format('l jS \o\f F Y h:i:s A'), "<br>";
+
+echo "<br>";
+$origin = new DateTimeImmutable('2009-10-11');
+$target = new DateTimeImmutable('2019-12-09');
+$interval = $origin->diff($target);
+echo $interval->format('%R%a days %m %Y');
+
+echo "<br>";
+$originalTime = new DateTimeImmutable("2023-01-01 UTC");
+$targedTime = new DateTimeImmutable("2023-12-31 UTC");
+$interval = $originalTime->diff($targedTime);
+echo "Full days: ", $interval->format("%a"), "<br>";
+
+echo "<hr>";
+$start_date = date_create("2021-01-01");
+$end_date = date_create("2021-01-16"); // If you want to include this date, add 1 day
+
+$interval = DateInterval::createFromDateString('3 day');
+$daterange = new DatePeriod($start_date, $interval, $end_date);
+
+function show_dates($dr)
+{
+    foreach ($dr as $date1) {
+        echo $date1->format('d-m-Y') . '<br>';
+    }
+}
+
+show_dates($daterange);
+
+echo '<br>';
+
+// reverse the array
+
+$daterange = array_reverse(iterator_to_array($daterange));
+
+show_dates($daterange);
