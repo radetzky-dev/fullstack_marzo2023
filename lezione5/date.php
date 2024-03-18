@@ -235,6 +235,7 @@ function show_dates($dr)
     }
 }
 
+
 show_dates($daterange);
 
 echo '<br>';
