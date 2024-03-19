@@ -33,7 +33,7 @@ if (
 <body>
     <?php
     if ($img_path != "") { ?>
-        <img src="<?php echo $img_path; ?>" width=250>
+        <img src="<?php echo $img_path; ?>" alt="immagine" width=250>
         <?php
     }
     ?>
