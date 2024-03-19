@@ -15,4 +15,10 @@ echo $_SESSION['nome'] . " hai visitato questa pagina " . $_SESSION['count'] . "
 echo "<br>Cosa c'è nel carrello?  ";
 var_dump($_SESSION['carrello']);
 
+if ($_SESSION['count'] > 3) {
+    session_destroy();
+}
+
+
+
 //unset($_SESSION['count']);
