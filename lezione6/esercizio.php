@@ -10,7 +10,19 @@
 </head>
 <?php
 
-
+/**
+ * getTodayDate
+ *
+ * @return string
+ */
+function getTodayDate(): string
+{
+    $today = new DateTime('now');
+    $todayYear = $today->format('Y');
+    $todayMonth = $today->format('m');
+    $todayDay = $today->format('d');
+    return $todayYear . "-" . $todayMonth . "-" . $todayDay;
+}
 
 /**
  * checkNumbersInText
@@ -33,19 +45,53 @@ $dummyPhoto = "assets/dummy.png";
 
 $name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyName = $email = $birthdate = $dummySurname = $dummyText = $terms = $errors = "";
 
+if (isset ($_POST['uploadPhoto'])) {
+
+    if ($_FILES) {
+        $uploadDir = __DIR__ . '/assets';
+        foreach ($_FILES as $file) {
+            if (UPLOAD_ERR_OK === $file['error']) {
+                $fileName = basename($file['name']);
+                $result = move_uploaded_file($file['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $fileName);
+                if ($result) {
+                    $dummyPhoto = "uploads" . DIRECTORY_SEPARATOR . $fileName;
+                    $dummyPhoto = "assets/" . $fileName;
+                } else {
+                    echo '<br>ERRORE NEL CARICAMENTO DELL\'IMMAGINE!<br>';
+                }
+            }
+        }
+    }
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
+
+
+
+
+
     if (
         (checkNumbersInText($_POST['nome'], "nome", $errors))
         && (checkNumbersInText($_POST['cognome'], "cognome", $errors))
     ) {
         echo "Ciao " . $_POST['nome'] . " " . $_POST['cognome'] . "<br/>";
-        //TODO qui mostrerò anche altri dati
+        echo "Il nome della tua societa è: " . $_POST['societa'] . "<br/>";
+        echo "La tua qualifica è: " . $_POST['qualifica'] . "<br/>";
+        echo "Il tuo numero di telefono è: " . $_POST['telefono'] . "<br/>";
+        echo "Il tuo indirizzo email è: " . $_POST['email'] . "<br/>";
+        echo "La tua data di nascita è: " . $_POST['birthdate'] . "<br/>";
+
         //TODO salverò i dati
     }
 
     $name = $_POST['nome'];
     $surname = $_POST['cognome'];
+    $company = $_POST['societa'];
+    $qualifica = $_POST['qualifica'];
+    $email = $_POST['email'];
+    $phone = $_POST['telefono'];
+    $birthdate = $_POST['birthdate'];
 }
 
 ?>
@@ -115,14 +161,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
                     </div>
                     <div class="form-group">
                         <label for="exampleInputTelephone">Telefono</label>
-                        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono"
-                            value="<?= $phone ?>" required>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Telefono"
+                            value="<?= $phone ?>" pattern="[0-9]{10}" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputBirthDate">Data di nascita</label>
                         <input type="date" class="form-control" id="birthdate" name="birthdate"
                             placeholder="Data di nascita" value="<?= $birthdate ?>" required min="1920-01-01"
-                            max="<?php //echo getTodayDate();                                          ?>">
+                            max="<?php echo getTodayDate(); ?>">
                     </div>
 
                     <div class="form-group form-check">
