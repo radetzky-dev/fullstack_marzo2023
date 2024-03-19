@@ -67,31 +67,20 @@ if (isset ($_POST['uploadPhoto'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
 
-
-
-
-
     if (
         (checkNumbersInText($_POST['nome'], "nome", $errors))
         && (checkNumbersInText($_POST['cognome'], "cognome", $errors))
     ) {
-        echo "Ciao " . $_POST['nome'] . " " . $_POST['cognome'] . "<br/>";
-        echo "Il nome della tua societa è: " . $_POST['societa'] . "<br/>";
-        echo "La tua qualifica è: " . $_POST['qualifica'] . "<br/>";
-        echo "Il tuo numero di telefono è: " . $_POST['telefono'] . "<br/>";
-        echo "Il tuo indirizzo email è: " . $_POST['email'] . "<br/>";
-        echo "La tua data di nascita è: " . $_POST['birthdate'] . "<br/>";
+        $name = $_POST['nome'];
+        $surname = $_POST['cognome'];
+        $company = $_POST['societa'];
+        $qualifica = $_POST['qualifica'];
+        $email = $_POST['email'];
+        $phone = $_POST['telefono'];
+        $birthdate = $_POST['birthdate'];
 
-        //TODO salverò i dati
     }
 
-    $name = $_POST['nome'];
-    $surname = $_POST['cognome'];
-    $company = $_POST['societa'];
-    $qualifica = $_POST['qualifica'];
-    $email = $_POST['email'];
-    $phone = $_POST['telefono'];
-    $birthdate = $_POST['birthdate'];
 }
 
 ?>
@@ -106,20 +95,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
                     <img class="card-img-top" src="<?= $dummyPhoto; ?>" id="profilePhoto" alt="">
                     <div class="card-body">
                         <h5 class="card-title" id="namesurname">
-                            <?= $dummyName . ' ' . $dummySurname; ?>
+                            <?= $name . ' ' . $surname; ?><br>
+                            <?= $company . ' ' . $qualifica; ?>
+                            <?= $email . ' ' . $phone; ?><br>
+                            <?= $birthdate; ?><br>
                         </h5>
                         <p class="card-text">
                             <?= $dummyText; ?>
                         </p>
-                        <button class="btn btn-primary">Dati corretti: registrami</button>
                     </div>
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data"
-                        id="FormProfilePhoto">
-                        <input type="file" name="file">
-                        <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
-                        <input type="hidden" name="otherFormInfo" value="<?= $anagraficaArray; ?>" />
-                        <input type="submit" name="upload" value="Carica foto profilo">
-                    </form>
+
                 </div>
             </div>
 
@@ -170,6 +155,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
                             placeholder="Data di nascita" value="<?= $birthdate ?>" required min="1920-01-01"
                             max="<?php echo getTodayDate(); ?>">
                     </div>
+                    <div class="form-group form-check">
+                        <label for="exampleInputBirthDate" Carica la tua foto</label>
+                            <input type="file" name="file">
+                            <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
+                    </div>
 
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="terms" name="terms" <?php
@@ -179,6 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
                         ?> required>
                         <label class="form-check-label" for="exampleCheck1">Accetta i nostri termini di servizio</label>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
