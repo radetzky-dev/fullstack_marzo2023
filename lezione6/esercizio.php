@@ -156,9 +156,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
                             max="<?php echo getTodayDate(); ?>">
                     </div>
                     <div class="form-group form-check">
-                        <label for="exampleInputBirthDate" Carica la tua foto</label>
-                            <input type="file" name="file">
-                            <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
+                        <label for="exampleInputBirthDate"> Carica la tua foto</label>
+                        <input type="file" name="file">
+                        <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
                     </div>
 
                     <div class="form-group form-check">
