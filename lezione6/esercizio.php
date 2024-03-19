@@ -9,18 +9,55 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <?php
+
+
+
+/**
+ * checkNumbersInText
+ *
+ * @param  mixed $text
+ * @param  mixed $fieldName
+ * @param  mixed $errors
+ * @return bool
+ */
+function checkNumbersInText(string $text, string $fieldName, string &$errors): bool
+{
+    if (preg_match("/[^A-Za-z'-]/", $text)) {
+        $errors = $errors . "Hai inserito dei caratteri non validi nel <b>$fieldName</b>! Correggilo<br>";
+        return false;
+    }
+    return true;
+}
+
 $dummyPhoto = "assets/dummy.png";
 
-$name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyName = $email = $birthdate = $dummySurname = $dummyText = $terms = "";
+$name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyName = $email = $birthdate = $dummySurname = $dummyText = $terms = $errors = "";
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST["nome"]) {
+    if (
+        (checkNumbersInText($_POST['nome'], "nome", $errors))
+        && (checkNumbersInText($_POST['cognome'], "cognome", $errors))
+    ) {
+        echo "Ciao " . $_POST['nome'] . " " . $_POST['cognome'] . "<br/>";
+        //TODO qui mostrerò anche altri dati
+        //TODO salverò i dati
+    }
+
+    $name = $_POST['nome'];
+    $surname = $_POST['cognome'];
+}
+
 ?>
 
 <body>
     <div class="container">
         <h3>Registration form</h3>
+
         <div class="row">
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="<?= $dummyPhoto; ?>" id="profilePhoto" alt="Card image cap">
+                    <img class="card-img-top" src="<?= $dummyPhoto; ?>" id="profilePhoto" alt="">
                     <div class="card-body">
                         <h5 class="card-title" id="namesurname">
                             <?= $dummyName . ' ' . $dummySurname; ?>
@@ -41,6 +78,9 @@ $name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyNam
             </div>
 
             <div class="col">
+                <div>
+                    <?php echo $errors; ?>
+                </div>
                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome">Nome</label>
@@ -82,7 +122,7 @@ $name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyNam
                         <label for="exampleInputBirthDate">Data di nascita</label>
                         <input type="date" class="form-control" id="birthdate" name="birthdate"
                             placeholder="Data di nascita" value="<?= $birthdate ?>" required min="1920-01-01"
-                            max="<?php //echo getTodayDate();       ?>">
+                            max="<?php //echo getTodayDate();                                         ?>">
                     </div>
 
                     <div class="form-group form-check">
