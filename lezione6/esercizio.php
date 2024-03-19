@@ -34,7 +34,7 @@ $dummyPhoto = "assets/dummy.png";
 $name = $surname = $phone = $anagraficaArray = $company = $qualifica = $dummyName = $email = $birthdate = $dummySurname = $dummyText = $terms = $errors = "";
 
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST["nome"]) {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset ($_POST["nome"])) {
     if (
         (checkNumbersInText($_POST['nome'], "nome", $errors))
         && (checkNumbersInText($_POST['cognome'], "cognome", $errors))
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST["nome"]) {
                         <label for="exampleInputBirthDate">Data di nascita</label>
                         <input type="date" class="form-control" id="birthdate" name="birthdate"
                             placeholder="Data di nascita" value="<?= $birthdate ?>" required min="1920-01-01"
-                            max="<?php //echo getTodayDate();                                         ?>">
+                            max="<?php //echo getTodayDate();                                          ?>">
                     </div>
 
                     <div class="form-group form-check">
