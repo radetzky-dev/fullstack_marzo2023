@@ -25,9 +25,14 @@ require_once "inc/header.php";
             </thead>
             <tbody>
                 <?php
-                foreach ($catalogo as $key => $categorie) {
-                    showCategory($catalogo, $key);
+                $myFile = readContentFile($pathData);
+                $myShopData = json_decode($myFile, true);
+                foreach ($myShopData['items'] as $key => $value) {
+                    echo "<tr><td>" . $value['name'] . "</td><td>" . $value['number'] . "</td><td>" . $value['description'] . "</td><td>" . $value['price'] . " €" . "</td><td class='table-primary'>" . strtoupper($value['category']) . "</td>
+                        <td><a href='#' class='btn btn-primary'  >Compra</a></td>
+                        </tr>";
                 }
+
                 ?>
             </tbody>
         </table>

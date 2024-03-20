@@ -9,8 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $myFile = readContentFile($pathData);
     $myShopData = json_decode($myFile, true);
 
+    //TODO inserire prezzi con la virgola
+    //caricare immagine insieme al prodotto
 
-    $newElem = ['id' => uniqid(), 'name' => $_REQUEST['name'], 'description' => $_REQUEST['description'], 'price' => $_REQUEST['price'], 'number' => $_REQUEST['qta']];
+    $newElem = ['id' => uniqid(), 'name' => $_REQUEST['name'], 'description' => $_REQUEST['description'], 'category' => $_REQUEST['category'], 'price' => $_REQUEST['price'], 'number' => $_REQUEST['qta']];
 
     $myShopData['items'][] = $newElem;
 
@@ -42,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="testo">Descrizione</label>
                                     <input type="text" class="form-control" id="description" name="description"
                                         placeholder="description" required>
+
+                                    <label for="testo">Categoria</label>
+                                    <input type="text" class="form-control" id="category" name="category"
+                                        placeholder="categoria" required>
                                     <label for="testo">Price</label>
                                     <input type="number" class="form-control" id="price" name="price" placeholder="price"
                                         required>
