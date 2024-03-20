@@ -1,5 +1,14 @@
 SPECIFICHE PROGETTO
 
+STRUTTURA DIRECTORY
+STORE
+assets/
+prodotti/ (tutti le immagini dei prodotti che carichiamo)
+inc/ (contiene i file inclusi) (p.e. functions.php)
+css/
+js/
+index.php
+
 - categorie di prodotti (scaricare qualche immagine)
 
 USER
