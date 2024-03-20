@@ -35,8 +35,32 @@ require_once "inc/header.php";
                         $dummyImage = "prodotti/" . $value['image'];
                     }
 
-                    echo "<tr><td><img src='$dummyImage' alt=" . $value['name'] . "></td><td>" . $value['name'] . "</td><td>" . $value['number'] . "</td><td>" . $value['description'] . "</td><td>" . $value['price'] . " €" . "</td><td class='table-primary'>" . strtoupper($value['category']) . "</td>
-                        <td><a href='#' class='btn btn-primary'  >Compra</a></td>
+
+                    $qta = checkIfLast($value['number']);
+                    $price = $value['price'];
+
+                    if ($qta == "ULTIMO") {
+                        $oldPrice = "<del>" . $price . " €</del>";
+                        $price = calculateDiscount($price, 12.5);
+                        $price = $oldPrice . '<br><b>' . $price . '</b>';
+                        $qta = "<b>ULTIMO</b>";
+                    }
+
+                    $buttonStatus = "";
+                    if ($qta == "ESAURITO") {
+                        $qta = "<span class='text-danger'>ESAURITO</span>";
+                        $buttonStatus = "disabled"; //TODO sul bottone compra che va disabilitato
+                    }
+
+                    $admin = "";
+                    if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+                        $admin = "<a href='insert_product.php?op=update&id=" . $value['id'] . "' class='btn btn-primary'>Modifica prodotto</a>
+                        <a href='delete_product.php?op=delete&id=" . $value['id'] . "' class='btn btn-primary'>Elimina prodotto</a>"; //TODO chiedere conferma con un popup
+                    }
+
+                    echo "<tr><td><img src='$dummyImage' alt=" . $value['name'] . "></td><td>" . $value['name'] . "</td><td>$qta</td><td>" . $value['description'] . "</td><td>$price €" . "</td><td class='table-primary'>" . strtoupper($value['category']) . "</td>
+                        <td>
+                        <a href='#' class='btn btn-primary'>Compra</a> $admin</td>
                         </tr>";
                 }
 
