@@ -1,0 +1,25 @@
+SPECIFICHE PROGETTO
+
+- categorie di prodotti (scaricare qualche immagine)
+
+USER
+
+index.php (splah page) : mostriamo alcuni prodotti
+
+header con logo e menù
+oggetti in primo piano -> vedere categoria -> vedere singolo oggetto
+
+lezione2/array_formattato.php vede solo compra-> carrello
+
+carrello con gli oggetti che compro
+
+checkout
+
+ADMIN
+
+login.php
+
+(vede aggiungi prodotto + bottone modifica)
+
+backend.php dove posso caricare e gestire i prodotti
+lezione2/array_formattato.php (elimina, aggiorna, eccetera)
