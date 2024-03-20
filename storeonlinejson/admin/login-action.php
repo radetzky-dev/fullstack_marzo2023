@@ -2,6 +2,9 @@
 if (!empty ($_POST["login"])) {
     session_start();
 
+    $host = $_SERVER['HTTP_HOST'];
+    $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
     if ($_POST['user_name'] == 'admin' && $_POST['password'] == 'admin') {
         $_SESSION["userId"] = 'admin';
         $_SESSION["role"] = "admin";
@@ -10,7 +13,15 @@ if (!empty ($_POST["login"])) {
         $_SESSION["role"] = "user";
     } else {
         $_SESSION["errorMessage"] = "Invalid Credentials";
-        header("Location: login.php");
+        $extra = 'login.php';
+        header("Location: http://$host$uri/$extra");
+        die();
     }
-    header("Location: ..index.php");
+
+    $extra = 'index.php';
+    //    echo $uri . '<br>';
+    $uri = str_replace("/admin", "", $uri);
+
+    header("Location: http://$host$uri/$extra");
+
 }
