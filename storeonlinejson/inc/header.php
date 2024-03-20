@@ -1,8 +1,3 @@
-<?php
-require_once "inc/functions.php";
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +33,11 @@ session_start();
                             <li><a href="#" class="nav-link px-2 text-white">Prodotti</a></li>
                             <li><a href="#" class="nav-link px-2 text-white">Carrello</a></li>
 
+                            <?php
+                            if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
+                                <li><a href="#" class="nav-link px-2 text-white">Gestione prodotti</a></li>
+                            <?php } ?>
+
                         </ul>
 
                         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -46,8 +46,17 @@ session_start();
                         </form>
 
                         <div class="text-end">
-                            <button type="button" class="btn btn-warning">Admin</button>
+                            <?php
+                            if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
+                                <a href="admin/logout.php" class="btn btn-warning">Logout</a>
+                            <?php } else { ?>
+                                <a href="admin/login.php" class="btn btn-warning">Login</a>
+                            <?php } ?>
                         </div>
+
+
+
+
                     </div>
                 </div>
             </header>

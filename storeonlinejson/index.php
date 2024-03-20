@@ -1,8 +1,19 @@
 <?php
+session_start();
+require_once "inc/functions.php";
 require_once "inc/header.php";
+
 ?>
 
 <a href='#' class='btn btn-primary' onclick='return test();'>test</a>
+
+<?php
+if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
+    <h3>Menù per la gestione AMMINISTRATORI</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti placeat quo, repellendus eveniet facere
+        tempora asperiores suscipit vitae aspernatur quisquam? Hic perspiciatis aperiam nulla magni iste labore
+        provident voluptates nostrum?</p>
+<?php } ?>
 
 <table class="table table-bordered" id="tabella">
     <thead thead class="table-dark">
@@ -83,8 +94,6 @@ require_once "inc/header.php";
         </div>
     </div>
 </div>
-
-
 
 <?php
 require_once "inc/footer.php";
