@@ -22,20 +22,26 @@
                 <?php echo $myStoreName; ?>
             </h3>
             <header class="p-3 text-bg-dark">
+
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <a href="<?php echo getMyUrl(); ?>"
+                            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                             <?php echo $logo; ?>
                         </a>
 
                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                            <li><a href="#" class="nav-link px-2 text-white">Prodotti</a></li>
+                            <li><a href="<?php echo getMyUrl(); ?>" class="nav-link px-2 text-secondary">Home</a></li>
+                            <li><a href="<?php echo getMyUrl(); ?>/gestione_prodotti.php"
+                                    class="nav-link px-2 text-white">Prodotti</a></li>
                             <li><a href="#" class="nav-link px-2 text-white">Carrello</a></li>
+
 
                             <?php
                             if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
-                                <li><a href="#" class="nav-link px-2 text-white">Gestione prodotti</a></li>
+                                <li><a href="<?php echo getMyUrl(); ?>/gestione_prodotti.php"
+                                        class="nav-link px-2 text-white">Gestione Prodotti</a>
+                                </li>
                             <?php } ?>
 
                         </ul>
@@ -48,9 +54,9 @@
                         <div class="text-end">
                             <?php
                             if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
-                                <a href="admin/logout.php" class="btn btn-warning">Logout</a>
+                                <a href="<?php echo getMyUrl(); ?>/admin/logout.php" class="btn btn-warning">Logout</a>
                             <?php } else { ?>
-                                <a href="admin/login.php" class="btn btn-warning">Login</a>
+                                <a href="<?php echo getMyUrl(); ?>/admin/login.php" class="btn btn-warning">Login</a>
                             <?php } ?>
                         </div>
 
