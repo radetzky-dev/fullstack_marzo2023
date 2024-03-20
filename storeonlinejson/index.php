@@ -2,12 +2,7 @@
 require_once "inc/header.php";
 ?>
 
-<script>
-    //TODO mettere nel js
-    function confirmDelete() {
-        return confirm("Sei sicuro di voler cancellare?");
-    };
-</script>
+<a href='#' class='btn btn-primary' onclick='return test();'>test</a>
 
 <table class="table table-bordered" id="tabella">
     <thead thead class="table-dark">
