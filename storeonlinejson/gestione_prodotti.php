@@ -9,7 +9,7 @@ require_once "inc/header.php";
     <div class="container">
         <?php
         if (isset ($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
-            <a href="add_product.php" class='btn btn-primary'>Aggiungi prodotto</a>
+            <a href="insert_product.php" class='btn btn-primary'>Aggiungi prodotto</a>
         <?php } ?>
 
         <table class="table table-bordered" id="tabella">
