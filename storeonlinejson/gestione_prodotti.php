@@ -16,6 +16,7 @@ require_once "inc/header.php";
             <thead class="table-dark">
                 <tr>
                     <th>Immagine</th>
+                    <th>Nome</th>
                     <th>Qta</th>
                     <th>Descrizione</th>
                     <th>Prezzo</th>
@@ -27,8 +28,14 @@ require_once "inc/header.php";
                 <?php
                 $myFile = readContentFile($pathData);
                 $myShopData = json_decode($myFile, true);
+                $dummyImage = "prodotti/dummy.png";
                 foreach ($myShopData['items'] as $key => $value) {
-                    echo "<tr><td>" . $value['name'] . "</td><td>" . $value['number'] . "</td><td>" . $value['description'] . "</td><td>" . $value['price'] . " €" . "</td><td class='table-primary'>" . strtoupper($value['category']) . "</td>
+
+                    if (isset ($value['image']) && $value['image'] != "") {
+                        $dummyImage = "prodotti/" . $value['image'];
+                    }
+
+                    echo "<tr><td><img src='$dummyImage' alt=" . $value['name'] . "></td><td>" . $value['name'] . "</td><td>" . $value['number'] . "</td><td>" . $value['description'] . "</td><td>" . $value['price'] . " €" . "</td><td class='table-primary'>" . strtoupper($value['category']) . "</td>
                         <td><a href='#' class='btn btn-primary'  >Compra</a></td>
                         </tr>";
                 }
