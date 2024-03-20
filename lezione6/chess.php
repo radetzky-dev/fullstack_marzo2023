@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <h3>Schacchiera</h3>
+    <h3>Scacchiera</h3>
     <table width="270px" cellspacing="0px" cellpadding="0px" border="1px">
         <?php
         for ($row = 1; $row <= 8; $row++) {
